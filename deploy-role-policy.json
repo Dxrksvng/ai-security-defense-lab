@@ -2,10 +2,25 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "MedVitalsServiceRole",
+      "Sid": "MedVitalsDeploymentActions",
       "Effect": "Allow",
-      "Action": "*",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeSecurityGroups",
+        "logs:CreateLogGroup",
+        "iam:ListRoles",
+        "lambda:UpdateFunctionCode",
+        "s3:PutBucketLogging"
+      ],
       "Resource": "*"
+    },
+    {
+      "Sid": "MedVitalsDeploymentArtifacts",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": "arn:aws:s3:::medvitals-deployments/*"
     }
   ]
 }
